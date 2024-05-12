@@ -40,7 +40,11 @@ The project is divided into 2 main components:
     - User can also login using google account.
 
 2. **Dashboard**: The dashboard page contains the navigation bar and the main content of the application. In Dashboard, the user can see the following:
+  - Navigation Bar: The navigation bar contains the following links:
+    - Title: The title of the application is displayed on the navigation bar.
+    - Bar: The bar is displayed on the right side of the navigation bar. It contains the following links:
+      - Logout: The logout link is displayed on the navigation bar. When the user clicks on the logout link, the user will be redirected to the login page.
     - Date: The current date is displayed on the dashboard.
     - Live-Jobs-card: This card displays the number of live jobs.
     - Total-applicants-card: This card displays the total number of applicants.
-    - Matched-applicants-card: This card displays the number of matched applicants.
+  - Matched-applicants-card: This card displays the number of matched applicants. This will show 5 matched applications in beginning, after clicking on see more button it will show all matched applicants.
