@@ -1,1 +1,47 @@
-<p>login works!</p>
+<div class="container mx-auto p-4 lg:w-1/3 lg:border-x lg:border-gray-400 h-screen">
+  <div>
+    <h1 class="py-8 text-center text-[24px]">Tesla Corp</h1>
+    <div class="text-center mb-4">
+      <p class="text-[18px] font-semibold">Login to your dashboard</p>
+      <p class="text-[14px]">Enter with username and password</p>
+    </div>
+    <div class="flex flex-col justify-center">
+      <form class="w-full" [formGroup]="loginForm" (submit)="onLogin()">
+        <div class="mb-[20px]">
+          <input placeholder="Username" type="text" formControlName="username" name="username" id="username"
+                 class="w-full p-[10px] border-2 border-gray-300 rounded-[5px]">
+          <div *ngIf="loginForm.get('username').hasError('required') && loginForm.get('username').touched"
+               class="text-red-500">Username is required
+          </div>
+        </div>
+        <div class="mb-[20px]">
+          <input placeholder="Password" type="password" formControlName="password" name="password" id="password"
+                 class="w-full p-[10px] border-2 border-gray-300 rounded-[5px]">
+          <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"
+               class="text-red-500">Password is required
+          </div>
+        </div>
+        <div class="mb-[20px]">
+          <button type="submit" class="w-full p-[10px] bg-[#333] text-white rounded-[5px]">Login</button>
+        </div>
+      </form>
+      <div class="flex justify-between items-center w-full">
+        <div class="w-[120px] h-1 bg-[#E6E6E6]"></div>
+        <div class="mx-4">or continue with</div>
+        <div class="w-[120px] h-1 bg-[#E6E6E6]"></div>
+      </div>
+      <!--    continue with google button-->
+      <div class="my-[20px]">
+        <button
+          class="w-full p-[10px] bg-[#EEEEEE] text-black flex justify-center items-center font-semibold space-x-2 rounded-[5px]">
+          <img src="./assets/images/google.png" alt="google" class="h-4 w-4">
+          <span>Google</span>
+        </button>
+      </div>
+      <div class="my-[20px] text-center text-[13px]">
+        <p class="text-[#828282]">By clicking continue, you agree to our <a class="text-black" href="">Terms of
+          Service</a> and <a class="text-black" href="">Privacy policy</a></p>
+      </div>
+    </div>
+  </div>
+</div>

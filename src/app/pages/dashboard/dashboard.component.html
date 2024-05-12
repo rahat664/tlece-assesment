@@ -1,1 +1,59 @@
-<p>dashboard works!</p>
+<div class="container mx-auto p-4 lg:w-1/3 lg:border-x lg:border-gray-400 h-full min-h-screen bg-black text-white">
+  <div class="flex py-2 justify-between relative items-center text-[24px] border-b border-gray-500">
+    <h1 class="text-[24px]">Tesla Corp</h1>
+    <button *ngIf="!isMenuOpen" (click)="isMenuOpen = !isMenuOpen">
+      <i class="fa-solid fa-bars text-[24px]"></i>
+    </button>
+    <button *ngIf="isMenuOpen" (click)="isMenuOpen = !isMenuOpen">
+      <i class="fa-solid fa-times text-[24px]"></i>
+    </button>
+    <ul *ngIf="isMenuOpen" class="absolute top-full right-0">
+      <button (click)="onclickLogout()" class="px-4 py-2 bg-gray-700 border-gray-500"><i
+        class="fa-solid fa-sign-out mr-2 text-[24px]"></i>Logout
+      </button>
+    </ul>
+  </div>
+  <div class="flex flex-col space-y-1 py-2 border-b border-gray-500">
+    <span class="text-[13px]">{{toDay | date: 'd' | convertNumberToPosition}} {{toDay | date: 'MMM y'}}</span>
+    <span class="text-[13px]">{{toDay | date: 'EEEE'}}</span>
+  </div>
+  <div class="flex flex-col space-y-2 py-2 text-[16px]">
+    <ng-container *ngFor="let data of demoData">
+      <span>Total Live Jobs : {{data.totalJobs}}</span>
+      <div class="rounded rounded-md overflow-hidden custom">
+        <div *ngFor="let job of data.jobs">
+          <div class="flex justify-between items-center p-2 border-b border-gray-500">
+            <span>{{job.name}}</span>
+            <button>
+              <i class="fa-solid fa-pen"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="py-2 custom rounded rounded-md p-2 mb-2 text-[16px]">
+    <ng-container *ngFor="let data of demoData">
+      <div class="flex flex-col">
+        <span>Total Applicant</span>
+        <span class="text-[36px] font-bold">{{data.totalApplicants}}</span>
+        <span class="text-[#00E0B8]">+{{data.lastWeekApplicants}} last week</span>
+      </div>
+    </ng-container>
+  </div>
+  <div class="py-2 custom rounded rouded-md p-4 flex flex-col space-y-2 text-[14px]">
+    <span class="text-[20px]">Matched Applicants</span>
+    <div *ngFor="let applicant of showedApplications">
+      <div class="flex justify-between items-center p-2 border-b border-gray-500">
+        <div class="flex space-x-2 items-center">
+          <img loading="lazy" class="h-6 w-6 rounded-full" src="{{applicant.imagesPath}}" alt="profile">
+          <span>{{applicant.name}}</span>
+        </div>
+        <a href="" class="underline">View Resume</a>
+      </div>
+    </div>
+    <button class="bg-black w-1/3 self-center text-white rounded-full p-2 mt-2 text-[12px]" (click)="onClickSeeMore()">
+      See More
+    </button>
+  </div>
+</div>
