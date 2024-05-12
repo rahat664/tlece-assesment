@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../core/services/auth.service";
 import {CommonModule} from "@angular/common";
@@ -26,14 +26,21 @@ export class LoginComponent {
 
   onLogin() {
     if (this.loginForm.valid) {
-      this.auth.login(this.loginForm.value.username, this.loginForm.value.password).subscribe((res: any) => {
-        localStorage.setItem('token', res.token);
-        if (this.auth.isLoggedIn()) {
-          this.router.navigate(['/dashboard']);
+      this.auth.login(this.loginForm.value.username, this.loginForm.value.password).subscribe({
+        next: (res: any) => {
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['dashboard']);
+        },
+        error: (err) => {
+          alert('Invalid username or password');
+          this.loginForm.get('username').setErrors({invalid: true});
+          this.loginForm.get('password').setErrors({invalid: true});
         }
+
       });
     } else {
       alert('Please fill in the form');
+      this.loginForm.markAllAsTouched();
     }
   }
 }

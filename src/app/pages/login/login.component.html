@@ -13,12 +13,18 @@
           <div *ngIf="loginForm.get('username').hasError('required') && loginForm.get('username').touched"
                class="text-red-500">Username is required
           </div>
+          <div *ngIf="loginForm.get('username').hasError('invalid') && loginForm.get('username').touched"
+               class="text-red-500">Invalid username
+          </div>
         </div>
         <div class="mb-[20px]">
           <input placeholder="Password" type="password" formControlName="password" name="password" id="password"
                  class="w-full p-[10px] border-2 border-gray-300 rounded-[5px]">
           <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"
                class="text-red-500">Password is required
+          </div>
+          <div *ngIf="loginForm.get('password').hasError('invalid') && loginForm.get('password').touched"
+               class="text-red-500">Invalid password
           </div>
         </div>
         <div class="mb-[20px]">
