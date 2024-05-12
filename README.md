@@ -35,9 +35,11 @@ The project is divided into 2 main components:
 ## Features
 
 1. **Login**: The application has a login functionality. The user can login using the login form. The user can login using the following credentials:
+  - username: kminchelle
+  - password: 0lelplR
     - If the user enters the correct credentials, the user will be redirected to the dashboard page.
     - If the user enters the wrong credentials, an error message will be displayed.
-    - User can also login using google account.
+  - User can also log in using google account.
 
 2. **Dashboard**: The dashboard page contains the navigation bar and the main content of the application. In Dashboard, the user can see the following:
   - Navigation Bar: The navigation bar contains the following links:
